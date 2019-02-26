@@ -1,0 +1,15 @@
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "description": "\"Dektop app version for hoodly\"",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Mohit Sharma",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^4.0.4",
+    "mysql": "^2.16.0"
+  }
+}
