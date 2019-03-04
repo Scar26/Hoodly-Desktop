@@ -2,244 +2,48 @@
 <html>
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="styles/chatbox.css">
-	<style>
-	body{
-		margin:0px;
-		background-color:white;
-	}
-	#search{
-		position:fixed;
-		height:3%;
-		width:37%;
-		margin-left:30%;
-		border-style:none;
-	
-	}
-	input#search:focus{
-		outline-width: 0;
-	}
-	#topnav{
-		width:100%;
-		height:3%;
-		position:fixed;
-		top:0px;
-		z-index:2;
-		background-color:#f1f1f1;
-	}
-
-	.chatbtn {
-	border-right: 30px solid #807f7f;
-	border-bottom: 25px solid transparent;
-	border-top: 30px solid transparent;
-	width: 0;
-	height: 125px;
-	position:absolute;
-	right:0px;
-	top:40%;
-	}
-	</style>
+	<link rel="stylesheet" href="styles/chatbox.css"> <!-- placeholder for the chatbox styling -->
+	<link rel="stylesheet" href="styles/cards.css" /> <!-- stylesheet for the cards -->
+	<link rel="stylesheet" href="styles/basic.css"> <!-- styles for the topnav,main area and chatbtn -->
+	<script type="text/javascript" src="scripts/cards.js"></script> <!-- Lazy load for the community cards -->
 	<title>Hoodly Desktop</title>
 </head>
 <body>
-	<div id="topnav">
+<!-- Top bar -->
+<div id="topnav">
 	<input type='text' id="search" placeholder="Look up a community">
-	<i class="fa fa-search" style="margin-left: 70%;"></i>
-	</div>
-	<div class="chatbtn"></div>
-	<div id="container" style="display:none;">
-	<aside>
-		<header>
-			<input type="text" placeholder="search">
-		</header>
-		<ul>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status orange"></span>
-						offline
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status green"></span>
-						online
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_03.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status orange"></span>
-						offline
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_04.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status green"></span>
-						online
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_05.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status orange"></span>
-						offline
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_06.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status green"></span>
-						online
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_07.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status green"></span>
-						online
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_08.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status green"></span>
-						online
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_09.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status green"></span>
-						online
-					</h3>
-				</div>
-			</li>
-			<li>
-				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_10.jpg" alt="">
-				<div>
-					<h2>Prénom Nom</h2>
-					<h3>
-						<span class="status orange"></span>
-						offline
-					</h3>
-				</div>
-			</li>
-		</ul>
-	</aside>
-	<main>
-		<header>
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
-			<div>
-				<h2>Chat with Vincent Porter</h2>
-				<h3>already 1902 messages</h3>
-			</div>
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
-		</header>
-		<ul id="chat">
-			<li class="you">
-				<div class="entete">
-					<span class="status green"></span>
-					<h2>Vincent</h2>
-					<h3>10:12AM, Today</h3>
-				</div>
-				<div class="triangle"></div>
-				<div class="message">
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				</div>
-			</li>
-			<li class="me">
-				<div class="entete">
-					<h3>10:12AM, Today</h3>
-					<h2>Vincent</h2>
-					<span class="status blue"></span>
-				</div>
-				<div class="triangle"></div>
-				<div class="message">
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				</div>
-			</li>
-			<li class="me">
-				<div class="entete">
-					<h3>10:12AM, Today</h3>
-					<h2>Vincent</h2>
-					<span class="status blue"></span>
-				</div>
-				<div class="triangle"></div>
-				<div class="message">
-					OK
-				</div>
-			</li>
-			<li class="you">
-				<div class="entete">
-					<span class="status green"></span>
-					<h2>Vincent</h2>
-					<h3>10:12AM, Today</h3>
-				</div>
-				<div class="triangle"></div>
-				<div class="message">
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				</div>
-			</li>
-			<li class="me">
-				<div class="entete">
-					<h3>10:12AM, Today</h3>
-					<h2>Vincent</h2>
-					<span class="status blue"></span>
-				</div>
-				<div class="triangle"></div>
-				<div class="message">
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				</div>
-			</li>
-			<li class="me">
-				<div class="entete">
-					<h3>10:12AM, Today</h3>
-					<h2>Vincent</h2>
-					<span class="status blue"></span>
-				</div>
-				<div class="triangle"></div>
-				<div class="message">
-					OK
-				</div>
-			</li>
-		</ul>
-		<footer>
-			<textarea placeholder="Type your message"></textarea>
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-			<a href="#">Send</a>
-		</footer>
-	</main>
+	<button  style="margin-left: 67%;"><i class="fa fa-search"></i></button>
 </div>
+<!-- Everything except the topbar goes here -->
+<div class="main">
+	<div class = "comm" > <!-- also styled in cards.css -->
+		<ul id="card-list">
+		</ul>
+	<br><br> <!-- Fixing a layout discrepancy -->	
+	</div>
+<div class="chatbtn"></div>
 
+<p id="debug"></p> <!-- for debugging purposes -->
+</div>
+<script> // might port to an external file later on.
+	const electron = require('electron');
+	const mysql = require('mysql');
+	var connection = mysql.createConnection({
+		host:"localhost", // Prototype is set up on a local server.Plan to move this online once I have the funds
+		user: "root", 
+		password: null, //Default username and password for the development session.Will change before it goes public
+		database: "city"
+	});
+ 	var cards= document.querySelector('#card-list');
+ 	$fetchcoms='SELECT * FROM `communities` where `city` = "roorkee"'; // SQL for all tables available in SQL.md
+ 	connection.query($fetchcoms,(err,rows,fields)=>{
+ 		for(i=0;i<rows.length;i++){
+ 			cards.innerHTML+="<li class='card' style='margin:0px;'><a class='card-image' href='#' style='background-image: url(images/HH.jpg)' data-image-full='images/HH.jpg'> <img src='images/HH.jpg' alt='Psychopomp' /> </a><a class='card-description' href='#'><h2 style='text-align:center;'>"+rows[i]['name']+"</h2><p style='text-align:center;'>"+rows[i]['name']+"</p></a></li>";
+
+ 		}
+
+ 	});
+	
+</script>
 </body>
 </html>

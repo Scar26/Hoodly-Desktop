@@ -6,6 +6,7 @@ const {app, BrowserWindow, Menu} = electron;
 let mainWindow;
 app.on('ready',function(){
 	mainWindow = new BrowserWindow({});
+	mainWindow.maximize();
 	mainWindow.loadURL(url.format({
 		pathname: path.join(__dirname,'main.html'),
 		protocol:'file:',
@@ -14,6 +15,8 @@ app.on('ready',function(){
 	const mainmenu = Menu.buildFromTemplate(menutemp);
 	Menu.setApplicationMenu(mainmenu);
 });
+
+
 let pwindow;
 function profile(){
 	 pwindow= new BrowserWindow({
@@ -21,7 +24,7 @@ function profile(){
 		width:200
 	});
 	pwindow.loadURL(url.format({
-		pathname: path.join(__dirname,'main.comsign.html'),
+		pathname: path.join(__dirname,'comsign.html'),
 		protocol:'file:',
 		slashes:true
 	}));
@@ -31,7 +34,7 @@ function profile(){
 const menutemp = [{
 	label:'user',
 	submenu:[{
-		label:'profile'
+		label:'profile',
 		click(){
 			profile();}
 	},

@@ -1,0 +1,43 @@
+	body{
+		margin:0px;
+		background-color:white;
+	}
+	#search{
+		position:fixed;
+		height:3%;
+		width:37%;
+		margin-left:30%;
+		border-style:none;
+	
+	}
+	input#search:focus{
+		outline-width: 0;
+	}
+	#topnav{
+		width:100%;
+		height:3%;
+		position:fixed;
+		top:0px;
+		z-index:2;
+		background-color:#f1f1f1;
+	}
+
+	.chatbtn {
+	border-right: 30px solid #807f7f;
+	border-bottom: 25px solid transparent;
+	border-top: 30px solid transparent;
+	width: 0;
+	height: 125px;
+	position:absolute;
+	right:0px;
+	top:40%;
+	}
+	button{
+	background-color:none;
+	border-style:none;
+	}
+	.main{
+		width:100%;
+		margin-top:3%;
+		height:97%;
+	}
