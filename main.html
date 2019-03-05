@@ -21,7 +21,7 @@
 		</ul>
 	<br><br> <!-- Fixing a layout discrepancy -->	
 	</div>
-<div class="chatbtn"></div>
+<div class="chatbtn"></div> <!-- Will later be used to pull out the chat box -->
 
 <p id="debug"></p> <!-- for debugging purposes -->
 </div>
@@ -34,12 +34,17 @@
 		password: null, //Default username and password for the development session.Will change before it goes public
 		database: "city"
 	});
+
+	function opencom(com){
+		document.querySelector('#debug').innerHTML=com; //TODO: redirect to the community page
+	}
  	var cards= document.querySelector('#card-list');
  	$fetchcoms='SELECT * FROM `communities` where `city` = "roorkee"'; // SQL for all tables available in SQL.md
+ 	// Fetch and display communities from the database.
+ 	//TODO : Change this to Jquery
  	connection.query($fetchcoms,(err,rows,fields)=>{
  		for(i=0;i<rows.length;i++){
- 			cards.innerHTML+="<li class='card' style='margin:0px;'><a class='card-image' href='#' style='background-image: url(images/HH.jpg)' data-image-full='images/HH.jpg'> <img src='images/HH.jpg' alt='Psychopomp' /> </a><a class='card-description' href='#'><h2 style='text-align:center;'>"+rows[i]['name']+"</h2><p style='text-align:center;'>"+rows[i]['name']+"</p></a></li>";
-
+ 			cards.innerHTML+="<li class='card' style='margin:0px;' onclick='opencom(`"+rows[i]['name']+"`)'><a class='card-image' href='#' style='background-image: url(coms/dispics/"+rows[i]['name']+".jpg)' data-image-full='coms/dispics/"+rows[i]['name']+".jpg'> <img src='coms/dispics/"+rows[i]['name']+".jpg' alt='Psychopomp' /> </a><a class='card-description' href='#'><h2 style='text-align:center;'>"+rows[i]['name']+"</h2><p style='text-align:center;'>"+rows[i]['name']+"</p></a></li>";
  		}
 
  	});

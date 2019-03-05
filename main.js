@@ -17,7 +17,7 @@ app.on('ready',function(){
 });
 
 
-let pwindow;
+let pwindow; //just a placeholder for debugging.
 function profile(){
 	 pwindow= new BrowserWindow({
 		height:500,
