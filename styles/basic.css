@@ -32,6 +32,10 @@
 	right:0px;
 	top:40%;
 	}
+
+	.chatbtn:hover{
+		border-right: 30px solid #565555;
+	}
 	button{
 	background-color:none;
 	border-style:none;

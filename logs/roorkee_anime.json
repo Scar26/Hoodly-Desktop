@@ -1,0 +1,13 @@
+{
+	"messages" : [
+		{
+			"sender":"admin",
+			 "msg" : "Hello World!"
+		},
+		{
+			"sender":"mohit",
+			"msg": "Hey you too"
+		}
+
+	]
+}

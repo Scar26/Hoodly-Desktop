@@ -22,6 +22,7 @@
 	<br><br> <!-- Fixing a layout discrepancy -->	
 	</div>
 <div class="chatbtn"></div> <!-- Will later be used to pull out the chat box -->
+<div id = "chatcontainer" ></div> 
 
 <p id="debug"></p> <!-- for debugging purposes -->
 </div>
@@ -34,9 +35,9 @@
 		password: null, //Default username and password for the development session.Will change before it goes public
 		database: "city"
 	});
-
+	const {ipcRenderer}=electron;
 	function opencom(com){
-		document.querySelector('#debug').innerHTML=com; //TODO: redirect to the community page
+		window.location='http://localhost:3000/communities/'+com+'/dashboard'; //TODO: redirect to the community page
 	}
  	var cards= document.querySelector('#card-list');
  	$fetchcoms='SELECT * FROM `communities` where `city` = "roorkee"'; // SQL for all tables available in SQL.md
@@ -51,4 +52,4 @@
 	
 </script>
 </body>
-</html>
+</html> 
