@@ -123,3 +123,8 @@ server.get('/communities/:com/:page',function(req,res){
 server.get('/images/dispics/:com',function(req,res){
 	res.sendFile(__dirname+'/coms/dispics/'+req.params.com+'.jpg');
 });
+
+//CSS files
+server.get('/styles/:file',function(req,res){
+	res.sendFile(__dirname+'/styles/'+req.params.file);
+});

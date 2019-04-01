@@ -1,66 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body{
-	margin:0px;
-}
-#banner{
-width:100%;
-height:20%;
-background:url('/images/dispics/<%= comname %>'); 
-background-clip:border-box;
-background-color:rgba(0, 0, 0, 0);
-background-origin:padding-box;
-background-position-x:30%;
-background-position-y:0%;
-background-repeat-x:;
-background-repeat-y:;
-background-size:auto;
-border-bottom-color:rgb(0, 0, 0);
-border-bottom-style:none;
-border-bottom-width:0px;
-border-image-outset:0px;
-border-image-repeat:stretch;
-border-image-slice:100%;
-border-image-source:none;
-border-image-width:1;
-border-left-color:rgb(0, 0, 0);
-border-left-style:none;
-border-left-width:0px;
-border-right-color:rgb(0, 0, 0);
-border-right-style:none;
-border-right-width:0px;
-border-top-color:rgb(0, 0, 0);
-border-top-style:none;
-border-top-width:0px;
-display:block;
-font-family:Roboto, Arial, sans-serif;
-font-size:10px;
-height:185.5px;
-margin-bottom:0px;
-margin-left:300px;
-margin-right:0px;
-margin-top:-100px;
-padding-bottom:130px;
-padding-left:100px;
-padding-right:50px;
-padding-top:0px;
-opacity:0.95;
-transition: 0.2s;
-}
-#banner:hover{
-	opacity:1;
-}
-.sidenav{
-	display:flex;
-	flex-wrap:colum;
-}
-</style>
-	<title><%= comname %>.jpg</title>
+<link rel = "stylesheet" href="/styles/basic.css">
+<link rel = "stylesheet" href="/styles/dash.css">
+<title>Dashboard: <%= comname %></title>
 </head>
 <body>
-<div id="banner"></div>
+  <div id="topnav">
+  <input type='text' id="search" placeholder="Look up a community">
+  <button  style="margin-left: 67%;"><i class="fa fa-search"></i></button>
+</div>
+<div class="menu" onmouseover="chop(0)" onmouseout="chop(1)">
+    <div class="title">MENU</div>
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+</div>
+<div id="banner" style="margin-left:200px;"><img src="../../images/dispics/<%= comname %>"></div>
+<h1 style="font-family:verdana; font-size: 50px; position:relative; margin-left:20%; color:#333333; opacity:0.7;"><%= comname %></h1>
+<div class="gallery">
+  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1439209306665-700c9bca794c?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=)"></div>
+  
+  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1466853817435-05b43fe45b39?dpr=1&auto=compress,format&fit=crop&w=1199&h=871&q=80&cs=tinysrgb&crop=)"></div>
+  
+  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1488572384981-eac03dfeb6b9?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=)"></div>
+  
+  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1470091688026-38b51162c8df?dpr=1&auto=compress,format&fit=crop&w=1199&h=750&q=80&cs=tinysrgb&crop=)"></div>
+  
+  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1475139450941-3b6464b2dde3?dpr=1&auto=compress,format&fit=crop&w=1199&h=673&q=80&cs=tinysrgb&crop=)"></div>
+</div>
+<script>
+  function chop(opac) {
+    document.getElementsByClassName('title')[0].style.opacity = opac;
+    document.getElementsByClassName('nav')[0].style.opacity= Math.abs(1-opac);
 
+}   
+</script>
 </body>
 </html>
