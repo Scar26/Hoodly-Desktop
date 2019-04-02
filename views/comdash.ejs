@@ -3,6 +3,7 @@
 <head>
 <link rel = "stylesheet" href="/styles/basic.css">
 <link rel = "stylesheet" href="/styles/dash.css">
+<link rel = "stylesheet" href="/styles/buttons.css">
 <title>Dashboard: <%= comname %></title>
 </head>
 <body>
@@ -14,31 +15,65 @@
     <div class="title">MENU</div>
     <ul class="nav">
       <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Work</a></li>
-      <li><a href="#">Resources</a></li>
+      <li><a href="#">My Communities</a></li>
       <li><a href="#">Contact</a></li>
+      <li><a href="#">About</a></li>
     </ul>
 </div>
 <div id="banner" style="margin-left:200px;"><img src="../../images/dispics/<%= comname %>"></div>
+<div  style="float:right; margin-top:40px; margin-right:200px;">
+<figure>
+  <div>
+    <span class="btnprism">Join</span>
+    <span class="btnprism" onclick="join(<%= comname %>)"><%= comname %></span>
+  </div>
+</figure>
+</div>
 <h1 style="font-family:verdana; font-size: 50px; position:relative; margin-left:20%; color:#333333; opacity:0.7;"><%= comname %></h1>
-<div class="gallery">
-  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1439209306665-700c9bca794c?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=)"></div>
+
+<div class="gallery" id="gallery"> <!-- TODO: these images will be loaded from the public directory of the community -->
+  <div class="item"></div>
   
-  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1466853817435-05b43fe45b39?dpr=1&auto=compress,format&fit=crop&w=1199&h=871&q=80&cs=tinysrgb&crop=)"></div>
+  <div class="item"></div>
   
-  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1488572384981-eac03dfeb6b9?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=)"></div>
+  <div class="item"></div>
   
-  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1470091688026-38b51162c8df?dpr=1&auto=compress,format&fit=crop&w=1199&h=750&q=80&cs=tinysrgb&crop=)"></div>
+  <div class="item"></div>
   
-  <div class="item" style="background-image: url(https://images.unsplash.com/photo-1475139450941-3b6464b2dde3?dpr=1&auto=compress,format&fit=crop&w=1199&h=673&q=80&cs=tinysrgb&crop=)"></div>
+  <div class="item"></div>
 </div>
 <script>
   function chop(opac) {
     document.getElementsByClassName('title')[0].style.opacity = opac;
     document.getElementsByClassName('nav')[0].style.opacity= Math.abs(1-opac);
 
-}   
+}
+  var gallery = document.getElementById('gallery');
+
+  //load images from the particular community
+  //the gallery variable contains an array of the last 5 filenames in the community's public images directory
+  '<%- gallery %>'.split(',').forEach(function(file){ 
+    var item = document.createElement('div');
+    item.class = "item";
+    item.style.background = `url('../../images/public/${file}')`; //
+    gallery.appendChild(item);
+  });
+
+  for(i=0;i<5;i++){
+    file = '<%- gallery %>'.split(',')[i];
+    document.getElementsByClassName('item')[i].style.background = `url('../../images/public/${file}') no-repeat right top`;
+  }
+
+  function join(com){
+    var request = new XMLHttpRequest;
+    request.onreadystatechange = function(){
+      if(this.readystate == 4 && this.status == 400){
+        location.reload();
+      }
+    }
+    request.open('POST',`../../join/${com}`,false);
+    request.send();
+  }
 </script>
 </body>
 </html>

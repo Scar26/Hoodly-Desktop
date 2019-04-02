@@ -7,6 +7,8 @@ const exserver = require('http').createServer(server);
 const session = require('express-session');
 const parser = require('body-parser');
 const io = require('socket.io').listen(exserver);
+const mysql = require('mysql');
+const fs = require('fs');
 
 process.env.NODE_ENV = 'development'; //change to production for release builds
 
@@ -88,40 +90,34 @@ if(process.env.NODE_ENV=='development'){
 
 exserver.listen(process.env.PORT || 3000); //Set up a server at port 3000 for dynamic requests
 
-//server.use('view engine','ejs');
-
-
-server.get('/login',function(req,res){
-	$auth='SELECT * FROM `user` where `name` ="'+req.body.uname+'" and `pass` ="'+req.body.pass+'"';
-	connection.query($auth,(err,rows,fields)=>{
-	console.log(rows);
-	if(rows[0]){
-			req.session.uname = req.body.uname;
-			console.log(req.body.uname+" added to the session");
-			res.sendFile(__dirname+'/chat.html');
-
-			}
-	else{
-			res.sendFile(__dirname+'/Invalid credentials');
-			}
-		}); 
-});
 
 //handle requests to open a community
 
 server.get('/communities/:com/:page',function(req,res){
-	console.log(req.params);
 	if(req.params.page=='dashboard'){
-		res.render('comdash.ejs',{comname:req.params.com}); //for non-members
+		req.session.currentCommunity = req.params.com; //stores the currently active community
+		$images = fs.readdirSync('images/public/'+req.params.com+'/');
+		res.render('comdash.ejs',{comname:req.params.com , gallery:[$images[0],$images[1],$images[2],$images[3],$images[4]] }); //for non-members
 	}
 	else{
 		res.render('commain',{ comname:req.params.com}); // for members of the community
 	}
 });
 
-//image routing
+//handle community join requests
+
+server.get('/join/:com',function(req,res){
+	//TODO
+});
+
+//Image routing
 server.get('/images/dispics/:com',function(req,res){
-	res.sendFile(__dirname+'/coms/dispics/'+req.params.com+'.jpg');
+	res.sendFile(__dirname+'/images/dispics/'+req.params.com+'.jpg');
+});
+
+//Serving gallery images
+server.get('/images/public/:file',function(req,res){
+	res.sendFile(__dirname + '/images/public/'+req.session.currentCommunity+'/'+req.params.file);
 });
 
 //CSS files
