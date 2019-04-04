@@ -5,10 +5,14 @@
 	<link rel="stylesheet" href="styles/chatbox.css"> <!-- placeholder for the chatbox styling -->
 	<link rel="stylesheet" href="styles/cards.css" /> <!-- stylesheet for the cards -->
 	<link rel="stylesheet" href="styles/basic.css"> <!-- styles for the topnav,main area and chatbtn -->
+	<link rel="stylesheet" href="styles/dash.css"> <!-- for the left Navbar -->
 	<script type="text/javascript" src="scripts/cards.js"></script> <!-- Lazy load for the community cards -->
+	<script type="text/javascript" src="scripts/chat.js"></script> <!-- handling chat messages and animations -->
+	<script src="/socket.io/socket.io.js"></script> <!-- Import Socket.io -->
+
 	<title>Hoodly Desktop</title>
 </head>
-<body>
+<body style="overflow:hidden;">
 <!-- Top bar -->
 <div id="topnav">
 	<input type='text' id="search" placeholder="Look up a community">
@@ -16,16 +20,33 @@
 </div>
 <!-- Everything except the topbar goes here -->
 <div class="main">
+<div class="menu" onmouseover="chop(0)" onmouseout="chop(1)">
+    <div class="title">MENU</div>
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">My Communities</a></li>
+      <li><a href="#">Add Memo</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+</div>
 	<div class = "comm" > <!-- also styled in cards.css -->
 		<ul id="card-list">
 		</ul>
 	<br><br> <!-- Fixing a layout discrepancy -->	
 	</div>
-<div class="chatbtn"></div> <!-- Will later be used to pull out the chat box -->
-<div id = "chatcontainer" ></div> 
-
-<p id="debug"></p> <!-- for debugging purposes -->
+<div class="chatbtn" id="chatbtn" onmouseover="document.getElementById('chatcontainer').style.marginLeft = '-300px';"></div>
+ <!-- used to pull out the chat box -->
+<div id="chatcontainer" onmouseleave="document.getElementById('chatcontainer').style.marginLeft = '0px';">
+	<div id="chattop">
+		<h1>Roorkee</h1>
+	</div>
+	<div id="chatmain">
+	</div>
+	<div id="chattext">
+		<input id="message" type="text" /><button name="submit" class="butt" onclick="sender()"  id="submitmsg"><i id="send" class="fa fa-paper-plane" aria-hidden="true"></i></button>
+	</div>
 </div>
+<p id="debug"></p> <!-- for debugging purposes -->
 <script> // might port to an external file later on.
 	const electron = require('electron');
 	const mysql = require('mysql');
@@ -37,7 +58,7 @@
 	});
 	const {ipcRenderer}=electron;
 	function opencom(com){
-		window.location='http://localhost:3000/communities/'+com+'/dashboard'; //TODO: redirect to the community page
+		window.location='http://localhost:3000/communities/'+com+'/dashboard';
 	}
  	var cards= document.querySelector('#card-list');
  	$fetchcoms='SELECT * FROM `communities` where `city` = "roorkee"'; // SQL for all tables available in SQL.md
@@ -45,10 +66,18 @@
  	//TODO : Change this to Jquery
  	connection.query($fetchcoms,(err,rows,fields)=>{
  		for(i=0;i<rows.length;i++){
- 			cards.innerHTML+="<li class='card' style='margin:0px;' onclick='opencom(`"+rows[i]['name']+"`)'><a class='card-image' href='#' style='background-image: url(coms/dispics/"+rows[i]['name']+".jpg)' data-image-full='coms/dispics/"+rows[i]['name']+".jpg'> <img src='coms/dispics/"+rows[i]['name']+".jpg' alt='Psychopomp' /> </a><a class='card-description' href='#'><h2 style='text-align:center;'>"+rows[i]['name']+"</h2><p style='text-align:center;'>"+rows[i]['name']+"</p></a></li>";
+ 			cards.innerHTML+="<li class='card' style='margin:0px;' onclick='opencom(`"+rows[i]['name']+"`)'><a class='card-image' href='#' style='background-image: url(images/dispics/"+rows[i]['name']+")' data-image-full='images/dispics/"+rows[i]['name']+"'> <img src='images/dispics/"+rows[i]['name']+"' alt='Psychopomp' /> </a><a class='card-description' href='#'><h2 style='text-align:center;'>"+rows[i]['name']+"</h2><p style='text-align:center;'>"+rows[i]['name']+"</p></a></li>";
  		}
 
  	});
+ 	function chop(opac) {
+    	document.getElementsByClassName('title')[0].style.opacity = opac;
+    	document.getElementsByClassName('nav')[0].style.opacity= Math.abs(1-opac);
+	}
+
+	//chat engine
+	var socket = io.connect();
+
 	
 </script>
 </body>

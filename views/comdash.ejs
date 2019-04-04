@@ -4,6 +4,7 @@
 <link rel = "stylesheet" href="/styles/basic.css">
 <link rel = "stylesheet" href="/styles/dash.css">
 <link rel = "stylesheet" href="/styles/buttons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Dashboard: <%= comname %></title>
 </head>
 <body>
@@ -14,10 +15,10 @@
 <div class="menu" onmouseover="chop(0)" onmouseout="chop(1)">
     <div class="title">MENU</div>
     <ul class="nav">
-      <li><a href="#">Home</a></li>
+      <li><a href="http://localhost:3000">Home</a></li>
       <li><a href="#">My Communities</a></li>
+      <li><a href="#">Add Memo</a></li>
       <li><a href="#">Contact</a></li>
-      <li><a href="#">About</a></li>
     </ul>
 </div>
 <div id="banner" style="margin-left:200px;"><img src="../../images/dispics/<%= comname %>"></div>
@@ -42,6 +43,9 @@
   
   <div class="item"></div>
 </div>
+<div id="memlist">
+  asdasdasd
+</div>
 <script>
   function chop(opac) {
     document.getElementsByClassName('title')[0].style.opacity = opac;
@@ -55,7 +59,7 @@
   '<%- gallery %>'.split(',').forEach(function(file){ 
     var item = document.createElement('div');
     item.class = "item";
-    item.style.background = `url('../../images/public/${file}')`; //
+    item.style.background = `url('../../images/public/${file}')`;
     gallery.appendChild(item);
   });
 

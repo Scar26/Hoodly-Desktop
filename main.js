@@ -14,7 +14,6 @@ process.env.NODE_ENV = 'development'; //change to production for release builds
 
 server.use(parser.json());
 server.use(parser.urlencoded({ extended: true}));
-
 server.use(session({
 	name : 'sID',
 	secret : '#14@4%=%^25$',
@@ -23,16 +22,18 @@ server.use(session({
 
 }));
 
+exserver.listen(process.env.PORT || 3000); //Listening on port 3000
+
+server.get('/',function(req,res){
+	res.sendFile(__dirname+'/main.html');
+});
+
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 let mainWindow;
 app.on('ready',function(){
 	mainWindow = new BrowserWindow({});
 	mainWindow.maximize();
-	mainWindow.loadURL(url.format({
-		pathname: path.join(__dirname,'main.html'),
-		protocol:'file:',
-		slashes:true
-	}));
+	mainWindow.loadURL('http://localhost:3000/');
 	const mainmenu = Menu.buildFromTemplate(menutemp);
 	Menu.setApplicationMenu(mainmenu);
 	if(process.env.NODE_ENV!='development'){
@@ -87,10 +88,6 @@ if(process.env.NODE_ENV=='development'){
 }
 
 //express starts here
-
-exserver.listen(process.env.PORT || 3000); //Set up a server at port 3000 for dynamic requests
-
-
 //handle requests to open a community
 
 server.get('/communities/:com/:page',function(req,res){
@@ -123,4 +120,9 @@ server.get('/images/public/:file',function(req,res){
 //CSS files
 server.get('/styles/:file',function(req,res){
 	res.sendFile(__dirname+'/styles/'+req.params.file);
+});
+
+//JS Files
+server.get('/scripts/:file',function(req,res){
+	res.sendFile(__dirname+'/scripts/'+req.params.file);
 });

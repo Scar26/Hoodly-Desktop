@@ -191,3 +191,11 @@ overflow: hidden;
   text-align: center;
   font-style: italic;
 }
+
+#memlist{
+  position:absolute;
+  height:100%;
+  width:100px;
+  background-color:black;
+  right:0px;
+}
