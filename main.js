@@ -25,6 +25,7 @@ server.use(session({
 exserver.listen(process.env.PORT || 3000); //Listening on port 3000
 
 server.get('/',function(req,res){
+	req.session.currentCommunity = "roorkee";
 	res.sendFile(__dirname+'/main.html');
 });
 
