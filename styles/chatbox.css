@@ -8,6 +8,7 @@
   	-webkit-box-shadow: -3px 0px 5px 1px rgba(0, 0, 0, 0.2);
   	box-shadow: -3px 0px 5px 1px rgba(0, 0, 0, 0.2);
   	z-index:2;
+  	top:60%;
   	transition: 0.2s ease-out;
 }
 #chattop{
@@ -18,12 +19,8 @@
 	background-color:#5e64e5;
 	font-family: verdana;
 	color:white;
-	opacity:0.8;
-	transition: 0.3s;
 }
-#chattop:hover{
-	opacity:1;
-}
+
 #chattop>h1{
 	position:relative;
 	font-size:50px;

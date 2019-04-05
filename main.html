@@ -36,7 +36,7 @@
 	</div>
 <div class="chatbtn" id="chatbtn" onmouseover="document.getElementById('chatcontainer').style.marginLeft = '-300px';"></div>
  <!-- used to pull out the chat box -->
-<div id="chatcontainer" onmouseleave="document.getElementById('chatcontainer').style.marginLeft = '0px';">
+<div id="chatcontainer" onmouseleave="document.getElementById('chatcontainer').style.marginLeft = '0px';" style="position:fixed;">
 	<div id="chattop">
 		<h1>Roorkee</h1>
 	</div>
@@ -47,6 +47,7 @@
 	</div>
 </div>
 <p id="debug"></p> <!-- for debugging purposes -->
+</div>
 <script> // might port to an external file later on.
 	const electron = require('electron');
 	const mysql = require('mysql');
