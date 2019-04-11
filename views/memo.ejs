@@ -5,13 +5,54 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-<link href= "/styles/memo.css" rel="stylesheet">
 <link href= "/styles/basic.css" rel="stylesheet">
 <link href="/styles/dash.css"  rel="stylesheet">
 <link href="/styles/buttons.css" rel="stylesheet">
 <script src="scripts/cards.js"></script>
+<style>
+html{
+	height:100vh;
+}
+body{
+	margin:0px;
+	width: 100%;
+	height:100%;
+}
+.grid{
+	display: grid;
+	grid-template-columns: 20% 80%;
+	grid-gap: 10px;
+	margin:0px;
+	height:100%;
+
+}
+
+#leftnav{
+	grid-column : 1/2;
+	grid-row: 1/;
+	background: #f3f3f3;
+}
+
+#newMemoText{
+	grid-column: 2/3;
+	grid-row:1/3;
+	background-color: #333333;
+	position: relative;
+	top:0px;
+}
+
+#memos{
+	grid-column: 2/3;
+	grid-row: 3/4;
+	background-color: #808080;
+	position:relative;
+	bottom:0px;
+	height:90%;
+}
+</style>
 </head>
 <body>
+<div class="grid">
 <div class="menu leftnav" onmouseover="chop(0)" onmouseout="chop(1)">
     <div class="title">MENU</div>
     <ul class="nav">
@@ -21,19 +62,12 @@
       <li><a href="#">Contact</a></li>
     </ul>
 </div>
-<div class="newMemoText">sasdasdasd</div>
-<div class="memos" id="stick-box">asdasdasdas
-asdasd
-asdasdasdasd
-asd
-asd
-asdas
-das
-das
-d
-asd
+<div id="leftnav"></div>	
+<div id="newMemoText"></div>
+<div id="memos" id="stick-box">
 <br><br>
-asdasdasd</div>
+</div>
+</div>
 <script>
 function chop(opac) {
 	document.getElementsByClassName('title')[0].style.opacity = opac;
