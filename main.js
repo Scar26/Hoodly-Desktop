@@ -25,7 +25,8 @@ server.use(session({
 exserver.listen(process.env.PORT || 3000); //Listening on port 3000
 
 server.get('/',function(req,res){
-	req.session.currentCommunity = "roorkee";
+	req.session.currentCommunity = "roorkee"; //will later be replaced by the current location of the user, obtained via geolocation API
+	req.session.uname = "USER"; //will be replaced by logged credentials
 	res.sendFile(__dirname+'/main.html');
 });
 
@@ -61,7 +62,7 @@ const menutemp = [{
 	label:'user',
 	submenu:[{
 		label:'profile',
-		click(){
+		click(){development  
 			profile();}
 	},
 	{
@@ -89,11 +90,12 @@ if(process.env.NODE_ENV=='development'){
 }
 
 //express starts here
-//handle requests to open a community
 
+
+//handle requests to open a community
 server.get('/communities/:com/:page',function(req,res){
 	if(req.params.page=='dashboard'){
-		req.session.currentCommunity = req.params.com; //stores the currently active community
+		req.session.currentCommunity = req.params.com; //stores the currently active community as a session variable
 		$images = fs.readdirSync('images/public/'+req.params.com+'/');
 		res.render('comdash.ejs',{comname:req.params.com , gallery:[$images[0],$images[1],$images[2],$images[3],$images[4]] }); //for non-members
 	}
@@ -102,8 +104,13 @@ server.get('/communities/:com/:page',function(req,res){
 	}
 });
 
-//handle community join requests
+//Add memo page
+server.get('/memo',function(req,res){
+	res.render('memo.ejs',{ uname : req.session.uname });
+});
 
+
+//handle community join requests
 server.get('/join/:com',function(req,res){
 	//TODO
 });
@@ -126,4 +133,9 @@ server.get('/styles/:file',function(req,res){
 //JS Files
 server.get('/scripts/:file',function(req,res){
 	res.sendFile(__dirname+'/scripts/'+req.params.file);
+});
+
+//Lib files
+server.get('/lib/:file',function(req,res){
+	res.sendFile(__dirname+'/lib/'+req.params.file);
 });
