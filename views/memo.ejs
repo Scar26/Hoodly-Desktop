@@ -8,51 +8,20 @@
 <link href= "/styles/basic.css" rel="stylesheet">
 <link href="/styles/dash.css"  rel="stylesheet">
 <link href="/styles/buttons.css" rel="stylesheet">
+<link href="/styles/memo.css" rel="stylesheet">
 <script src="scripts/cards.js"></script>
 <style>
-html{
-	height:100vh;
+.ql-snow .ql-editor pre.ql-syntax {
+    background-color: #23241f;
+    color: #f8f8f2;
+    overflow: hidden;
 }
-body{
-	margin:0px;
-	width: 100%;
-	height:100%;
-}
-.grid{
-	display: grid;
-	grid-template-columns: 20% 80%;
-	grid-gap: 10px;
-	margin:0px;
-	height:100%;
-
-}
-
-#leftnav{
-	grid-column : 1/2;
-	grid-row: 1/;
-	background: #f3f3f3;
-}
-
-#newMemoText{
-	grid-column: 2/3;
-	grid-row:1/3;
-	background-color: #333333;
-	position: relative;
-	top:0px;
-}
-
-#memos{
-	grid-column: 2/3;
-	grid-row: 3/4;
-	background-color: #808080;
-	position:relative;
-	bottom:0px;
-	height:90%;
-}
+</style>
+<style>
 </style>
 </head>
 <body>
-<div class="grid">
+<div class="bodygrid">
 <div class="menu leftnav" onmouseover="chop(0)" onmouseout="chop(1)">
     <div class="title">MENU</div>
     <ul class="nav">
@@ -62,17 +31,47 @@ body{
       <li><a href="#">Contact</a></li>
     </ul>
 </div>
-<div id="leftnav"></div>	
-<div id="newMemoText"></div>
-<div id="memos" id="stick-box">
-<br><br>
+<div id="newMemoText">
+	<button id="new" class="col-md-2 right add addMemobtn"><i id="btnilus" class="fa fa-plus-circle" aria-hidden="true"></i><span id="newbtn"> New note</span></button>
+</div>
+<div class="memos" id="stick-box">
 </div>
 </div>
 <script>
+var status = "inactive";
+let noteTitle,pad,quill;
 function chop(opac) {
 	document.getElementsByClassName('title')[0].style.opacity = opac;
 	document.getElementsByClassName('nav')[0].style.opacity= Math.abs(1-opac);
 }
+
+document.getElementById('new').addEventListener('click',function(){
+	if(document.getElementById('btnilus').className == "fa fa-plus-circle"){
+		document.getElementById('newMemoText').style.marginBottom = "-15%";
+		document.getElementsByClassName('memos')[0].style.marginTop = "15%";
+		document.getElementById('newbtn').innerHTML = "Cancel";
+		document.getElementById('btnilus').className = "fa fa-window-close";
+		setTimeout(function(){
+			pad = document.createElement('div');
+			pad.id = "editor";
+			pad.className = "left";
+			noteTitle = document.createElement('input');
+			noteTitle.id = "noteTitle";
+			noteTitle.className = "left add";
+			noteTitle.placeholder = "Title of the note";
+			document.getElementById('newMemoText').appendChild(noteTitle);
+			document.getElementById('newMemoText').appendChild(pad);			
+			quill = new Quill('#editor',{
+			theme : 'snow'
+			});
+
+		},200);
+	}
+	else{
+
+	}
+
+});
 </script>
 </body>
 </html>

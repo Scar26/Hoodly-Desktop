@@ -9,7 +9,7 @@ function events(list, e, listName) {
     var task = strip_tags(list, '').replace(/\s/g,''); // Clean the string of any tag or whote space
     var clean = task.substring(tmp, 9999999999999).length;
     var key = listName.toString();
-    if(tmp == 0) { // doing a little house keeping
+    if(tmp == 0) {
         data[key] = task.substr(tmp, tmp + clean) + ",";
      } else {
         data[key] += task.substr(tmp, tmp + clean) + ",";
@@ -69,8 +69,6 @@ function newSticky(stickyName) {
 var id = stickyName.replace(/\s/g,'');
 var sticky = "<div id=\""+id+"\" class=\"col-md-4 list-col\">";
     sticky += "<button class=\"del stick-icon\" onclick=\"del('"+id+"')\"><i class=\" fa fa-trash-o\" aria-hidden=\"true\"></i></button>"
-  // Use button for your oen saveing function see console.log(data);
-  //sticky += "<button class=\"export stick-icon\" onclick=\"export('"+stickyName+"')\"><i class=\" fa fa-cloud-download\" aria-hidden=\"true\"></i></button>"
     sticky += "<div class=\"col-md-12 list\">";
     sticky += "<h2 class=\"list-title\"> "+stickyName+" </h2>";
     sticky += "<ul onkeyup=\"events(this, event, '"+stickyName+"')\" contenteditable=\"true\" class=\"task-wrapper\">";
