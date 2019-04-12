@@ -23,14 +23,12 @@ body{
 #newMemoText{
 	grid-column: 2/3;
 	grid-row:1/2;
-	background-color: #333333;
 	transition: 0.3s;
 }
 
 .memos{
 	grid-column: 2/3;
 	grid-row: 2/4;
-	background-color: #808080;
 	transition: 0.3s;
 	overflow-y:scroll;
 }
