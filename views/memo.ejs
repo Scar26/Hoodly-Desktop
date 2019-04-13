@@ -12,9 +12,17 @@
 <script src="scripts/cards.js"></script>
 <style>
 .ql-snow .ql-editor pre.ql-syntax {
-    background-color: #23241f;
+    background-color: #000000;
     color: #f8f8f2;
     overflow: hidden;
+}
+
+.ql-toolbar{
+	overflow: hidden;
+    width: 70%;
+    position: relative;
+    left: -20.5%;
+    top: 5%;
 }
 </style>
 <style>
@@ -37,9 +45,9 @@
 <div class="memos" id="stick-box">
 </div>
 </div>
+<script src = "scripts/notes.js"></script>
 <script>
-var status = "inactive";
-let noteTitle,pad,quill;
+let noteTitle,pad,quill,toolbar,createMemo;
 function chop(opac) {
 	document.getElementsByClassName('title')[0].style.opacity = opac;
 	document.getElementsByClassName('nav')[0].style.opacity= Math.abs(1-opac);
@@ -57,10 +65,20 @@ document.getElementById('new').addEventListener('click',function(){
 			pad.className = "left";
 			noteTitle = document.createElement('input');
 			noteTitle.id = "noteTitle";
-			noteTitle.className = "left add";
+			noteTitle.className = "left notels";
 			noteTitle.placeholder = "Title of the note";
+			createMemo = document.createElement('button');
+			createMemo.id = "submitNote";
+			createMemo.className = "right add";
+			createMemo.innerHTML = "Create Memo";
 			document.getElementById('newMemoText').appendChild(noteTitle);
-			document.getElementById('newMemoText').appendChild(pad);			
+			document.getElementById('newMemoText').appendChild(pad);
+			document.getElementById('newMemoText').appendChild(createMemo);
+			createMemo.addEventListener('click',function(){
+				newSticky(document.getElementById('noteTitle').value);
+				closeEditor();
+
+			});			
 			quill = new Quill('#editor',{
 			theme : 'snow'
 			});
@@ -68,10 +86,23 @@ document.getElementById('new').addEventListener('click',function(){
 		},200);
 	}
 	else{
-
+		closeEditor();
 	}
 
+
 });
+
+function closeEditor(){
+	document.getElementById('newMemoText').style.marginBottom = "0%";
+	document.getElementsByClassName('memos')[0].style.marginTop = "0%";
+	document.getElementById('newbtn').innerHTML = "New note";
+	document.getElementById('btnilus').className = "fa fa-plus-circle";
+	document.getElementById('newMemoText').removeChild(document.getElementById('editor'));
+	document.getElementById('newMemoText').removeChild(document.getElementById('noteTitle'));
+	document.getElementById('newMemoText').removeChild(document.getElementById('submitNote'));
+	toolbar = document.getElementsByClassName('ql-toolbar')[0];
+	toolbar.parentNode.removeChild(toolbar);
+}
 </script>
 </body>
 </html>

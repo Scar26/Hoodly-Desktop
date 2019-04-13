@@ -6,7 +6,7 @@ var tmp = 0;
 function events(list, e, listName) {
    e.which = e.which || e.keyCode;
     if(e.which == 13) {
-    var task = strip_tags(list, '').replace(/\s/g,''); // Clean the string of any tag or whote space
+    var task = strip_tags(list, '').replace(/\s/g,''); // Clean the string of any tag or white space
     var clean = task.substring(tmp, 9999999999999).length;
     var key = listName.toString();
     if(tmp == 0) {

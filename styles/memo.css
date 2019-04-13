@@ -33,12 +33,23 @@ body{
 	overflow-y:scroll;
 }
 
+.notels{
+	background-color: #fff;
+    font-size: 20px;
+    transition: 0.2s;
+    border-radius: 5px;
+}
+
+.notels:hover{
+	background-color:#edf2f4b0;
+}
+
 #editor{
 	display: block;
-	margin-left: 10%;
-	height:35%;
+	height:32%;
 	width:70%;
 	background-color: #ffffff;
+  overflow:hidden;
 	animation: popup 0.5s;
 }
 
@@ -1833,6 +1844,10 @@ li.task.complete:before {
     background-color: #f1f1f1;
 }
 
+#noteTitle{
+	border: none;
+	margin-top:0.8%;
+}
 
 @keyframes popup {
   0%{
