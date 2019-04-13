@@ -47,7 +47,7 @@
 </div>
 <script src = "scripts/notes.js"></script>
 <script>
-let noteTitle,pad,quill,toolbar,createMemo;
+let noteTitle,pad,quill,toolbar,createMemo,appendContent,title;
 function chop(opac) {
 	document.getElementsByClassName('title')[0].style.opacity = opac;
 	document.getElementsByClassName('nav')[0].style.opacity= Math.abs(1-opac);
@@ -75,7 +75,11 @@ document.getElementById('new').addEventListener('click',function(){
 			document.getElementById('newMemoText').appendChild(pad);
 			document.getElementById('newMemoText').appendChild(createMemo);
 			createMemo.addEventListener('click',function(){
-				newSticky(document.getElementById('noteTitle').value);
+				title = document.getElementById('noteTitle').value;
+				newSticky(title);
+				appendContent = document.getElementById(title.replace(/\s/g,'')).children[1].children[1];
+				appendContent.innerHTML = document.getElementsByClassName('ql-editor')[0].innerHTML;
+				alert(appendContent);
 				closeEditor();
 
 			});			

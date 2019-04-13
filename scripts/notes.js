@@ -72,7 +72,7 @@ var sticky = "<div id=\""+id+"\" class=\"col-md-4 list-col\">";
     sticky += "<div class=\"col-md-12 list\">";
     sticky += "<h2 class=\"list-title\"> "+stickyName+" </h2>";
     sticky += "<ul onkeyup=\"events(this, event, '"+stickyName+"')\" contenteditable=\"true\" class=\"task-wrapper\">";
-    sticky += "<li onclick=\"mark(this, 'complete')\" class=\"task\"></li>";
+    sticky += "<li onclick=\"mark(this, 'complete')\" class=\"task first\" ></li>";
     sticky += "</ul>";
     sticky += "</div>";
     sticky += "</div>";
