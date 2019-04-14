@@ -42,7 +42,7 @@ TODO:
 
 Clone/Download the repository using the command git clone  https://github.com/Scar26/Hoodly-Desktop
 
-The program runs on Electron JS so you need to have node.js and npm installed. If you don't get them here https://nodejs.org/en/download/
+The program runs on Electron JS so you need to have node.js and npm installed. If you don't, get them here https://nodejs.org/en/download/
 
 First of all you need a MYSQL database running on localhost with a database "city". If you have that done, run bundle.py using the command <strong>python bundle.py</strong> and it will automatically create the relevant tables and record entries. For this, you need to have python installed. If you don't, get it here https://www.python.org/downloads/
 
