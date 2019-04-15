@@ -62,9 +62,8 @@
 		window.location='http://localhost:3000/communities/'+com+'/dashboard';
 	}
  	var cards= document.querySelector('#card-list');
- 	$fetchcoms='SELECT * FROM `communities` where `city` = "roorkee"'; // SQL for all tables available in SQL.md
+ 	$fetchcoms='SELECT * FROM `communities` where `college` = "roorkee"'; //Use bundle.py to create the required database
  	// Fetch and display communities from the database.
- 	//TODO : Change this to Jquery
  	connection.query($fetchcoms,(err,rows,fields)=>{
  		for(i=0;i<rows.length;i++){
  			cards.innerHTML+="<li class='card' style='margin:0px;' onclick='opencom(`"+rows[i]['name']+"`)'><a class='card-image' href='#' style='background-image: url(images/dispics/"+rows[i]['name']+")' data-image-full='images/dispics/"+rows[i]['name']+"'> <img src='images/dispics/"+rows[i]['name']+"' alt='Psychopomp' /> </a><a class='card-description' href='#'><h2 style='text-align:center;'>"+rows[i]['name']+"</h2><p style='text-align:center;'>"+rows[i]['name']+"</p></a></li>";
