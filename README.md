@@ -30,7 +30,7 @@ TODO:
 - ``Create communities landing page``
 - ``Create community dashboard page for new users``
 - ``Implement Add Memo functionality``
-- Create bundle.py for creating the appropriate database for the application
+- ``Create bundle.py for creating the appropriate database for the application``
 - write the chat engine
 - Create Main interaction pages for communities, complete wth a chatbox and event reminders
 - Create UserLogin system
