@@ -79,7 +79,6 @@ document.getElementById('new').addEventListener('click',function(){
 				newSticky(title);
 				appendContent = document.getElementById(title.replace(/\s/g,'')).children[1].children[1];
 				appendContent.innerHTML = document.getElementsByClassName('ql-editor')[0].innerHTML;
-				alert(appendContent);
 				closeEditor();
 
 			});			
