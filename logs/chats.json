@@ -1,0 +1,3 @@
+[{
+	"name":"global",
+	"createRoom":{"arguments":"this.name","body":"io.sockets.on('connection',function(socket){connections.push(socket);console.log('Sockets connected: %s',connections.length);io.sockets.emit('new user',connections.length);socket.on('disconnect',function(data){connections.splice(connections.indexOf(socket),1);console.log('Disconnected:%s Sockets connected',connections.length);});socket.on('send message',function(data){io.sockets.emit('new message', {msg : data.message});});});'}}]
